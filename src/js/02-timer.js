@@ -4,6 +4,9 @@ import 'notiflix/dist/notiflix-3.2.6.min.css';
 
 import Notiflix from 'notiflix';
 
+const startButton = document.querySelector('[data-start]');
+startButton.toggleAttribute('disabled');
+
 const options = {
   enableTime: true,
   time_24hr: true,
@@ -14,9 +17,8 @@ const options = {
       Notiflix.Notify.failure('Please choose a date in the future');
       return;
     }
-    const startButton = document.querySelector('[data-start]');
-    startButton.toggleAttribute('disabled');
     let timerId = null;
+    startButton.toggleAttribute('disabled');
     startButton.addEventListener('click', selectedDates => {
       const finalTime = this.selectedDates[0].getTime();
       timerId = setInterval(() => {
